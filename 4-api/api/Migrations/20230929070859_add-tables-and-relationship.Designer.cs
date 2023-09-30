@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using api.Context;
 
@@ -11,9 +12,11 @@ using api.Context;
 namespace api.Migrations
 {
     [DbContext(typeof(MyContext))]
-    partial class MyContextModelSnapshot : ModelSnapshot
+    [Migration("20230929070859_add-tables-and-relationship")]
+    partial class addtablesandrelationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,7 +74,7 @@ namespace api.Migrations
 
                     b.HasKey("NIK");
 
-                    b.ToTable("Accounts");
+                    b.ToTable("Account");
                 });
 
             modelBuilder.Entity("api.Models.Education", b =>
@@ -97,7 +100,7 @@ namespace api.Migrations
 
                     b.HasIndex("University_Id");
 
-                    b.ToTable("Educations");
+                    b.ToTable("Education");
                 });
 
             modelBuilder.Entity("api.Models.Profiling", b =>
@@ -112,7 +115,7 @@ namespace api.Migrations
 
                     b.HasIndex("Education_id");
 
-                    b.ToTable("Profilings");
+                    b.ToTable("Profiling");
                 });
 
             modelBuilder.Entity("api.Models.University", b =>
@@ -129,7 +132,7 @@ namespace api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Universities");
+                    b.ToTable("University");
                 });
 
             modelBuilder.Entity("api.Models.Account", b =>

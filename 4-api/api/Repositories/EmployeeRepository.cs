@@ -43,16 +43,19 @@ namespace api.Repositories
             string date = DateTime.Now.ToString("ddMMyy");
             string newNIK = "";
 
+            // cek data terakhir di database
             var lastData = context.Employees.OrderBy(data => data.NIK).LastOrDefault();
             if(lastData == null) {
+                // kalau ternyata gak ada data di database, otomatis urutan 001
                 newNIK = date + "001";
             } else {
+                // ada data terakhir, ambil 3 karakter string dari NIK (nomor urut)
                 var nikLastData = lastData.NIK;
                 string lastThree = nikLastData.Substring(nikLastData.Length-3);
                 
                 // convert jadi int terus tambah satu
                 int nextSequence = int.Parse(lastThree) + 1;
-                newNIK = date + nextSequence.ToString("000");
+                newNIK = date + nextSequence.ToString("000"); // convert jadi string
             }
 
             employee.NIK = newNIK;

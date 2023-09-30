@@ -1,4 +1,5 @@
 using api.Context;
+using api.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
@@ -17,6 +18,7 @@ namespace api.Model{
         public int Salary { get; set; }
         public string Email { get; set; }
         public Gender Gender { get; set; }
+        public Account Account { get; set; }
     }
     public enum Gender {
         // tipe data class untuk menyediakan pilihan
