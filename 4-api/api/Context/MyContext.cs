@@ -1,4 +1,3 @@
-using api.Model;
 using api.Models;
 using Microsoft.EntityFrameworkCore;
 using DbContext = Microsoft.EntityFrameworkCore.DbContext;
@@ -26,12 +25,14 @@ namespace api.Context{
             builder.Entity<Account>()
                 .HasOne(a => a.Employee)
                 .WithOne(e => e.Account)
-                .HasForeignKey<Account>(a => a.NIK);
+                .HasForeignKey<Account>(a => a.NIK)
+                .IsRequired();
 
             builder.Entity<Profiling>()
                 .HasOne(p => p.Account)
                 .WithOne(a => a.Profiling)
-                .HasForeignKey<Profiling>(p => p.NIK);
+                .HasForeignKey<Profiling>(p => p.NIK)
+                .IsRequired();
 
             // Kalau many-to-one, di .HasForeignKey gak perlu definisiin nama tabel
             // builder.Entity<Profiling>()
@@ -42,12 +43,14 @@ namespace api.Context{
             builder.Entity<Education>()
                 .HasMany(e => e.Profilings)
                 .WithOne(e => e.Education)
-                .HasForeignKey(e => e.Education_id);
+                .HasForeignKey(e => e.Education_id)
+                .IsRequired();
             
             builder.Entity<Education>()
                 .HasOne(e => e.University)
                 .WithMany(e => e.Educations)
-                .HasForeignKey(e => e.University_Id);
+                .HasForeignKey(e => e.University_Id)
+                .IsRequired();
         }
     }
 }

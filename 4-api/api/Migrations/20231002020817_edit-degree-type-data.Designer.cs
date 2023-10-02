@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using api.Context;
 
@@ -11,9 +12,11 @@ using api.Context;
 namespace api.Migrations
 {
     [DbContext(typeof(MyContext))]
-    partial class MyContextModelSnapshot : ModelSnapshot
+    [Migration("20231002020817_edit-degree-type-data")]
+    partial class editdegreetypedata
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +24,44 @@ namespace api.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("api.Model.Employee", b =>
+                {
+                    b.Property<string>("NIK")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Salary")
+                        .HasColumnType("int");
+
+                    b.HasKey("NIK");
+
+                    b.HasIndex("Phone", "Email")
+                        .IsUnique();
+
+                    b.ToTable("Employees");
+                });
 
             modelBuilder.Entity("api.Models.Account", b =>
                 {
@@ -61,44 +102,6 @@ namespace api.Migrations
                     b.ToTable("Educations");
                 });
 
-            modelBuilder.Entity("api.Models.Employee", b =>
-                {
-                    b.Property<string>("NIK")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("BirthDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Gender")
-                        .HasColumnType("int");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("Salary")
-                        .HasColumnType("int");
-
-                    b.HasKey("NIK");
-
-                    b.HasIndex("Phone", "Email")
-                        .IsUnique();
-
-                    b.ToTable("Employees");
-                });
-
             modelBuilder.Entity("api.Models.Profiling", b =>
                 {
                     b.Property<string>("NIK")
@@ -133,7 +136,7 @@ namespace api.Migrations
 
             modelBuilder.Entity("api.Models.Account", b =>
                 {
-                    b.HasOne("api.Models.Employee", "Employee")
+                    b.HasOne("api.Model.Employee", "Employee")
                         .WithOne("Account")
                         .HasForeignKey("api.Models.Account", "NIK")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -172,6 +175,12 @@ namespace api.Migrations
                     b.Navigation("Education");
                 });
 
+            modelBuilder.Entity("api.Model.Employee", b =>
+                {
+                    b.Navigation("Account")
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("api.Models.Account", b =>
                 {
                     b.Navigation("Profiling")
@@ -181,12 +190,6 @@ namespace api.Migrations
             modelBuilder.Entity("api.Models.Education", b =>
                 {
                     b.Navigation("Profilings");
-                });
-
-            modelBuilder.Entity("api.Models.Employee", b =>
-                {
-                    b.Navigation("Account")
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("api.Models.University", b =>

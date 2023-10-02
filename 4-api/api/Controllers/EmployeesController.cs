@@ -1,6 +1,7 @@
 using System.Net;
-using api.Model;
+using api.Models;
 using api.Repositories;
+using api.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
@@ -36,7 +37,7 @@ namespace api.Controllers
         }
 
         [HttpPost]
-        public virtual ActionResult Insert(Employee employee) {
+        public virtual ActionResult Insert(RegisterVM employee) {
             if(repository.CheckEmailUnique(employee.Email)==true) {
                 return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Email tidak boleh duplikat." });
             } else if(repository.CheckPhoneUnique(employee.Phone)==true) {

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations;
 
-namespace api.Model{
+namespace api.Models{
     // Model Employee
     [Index(nameof(Phone), nameof(Email), IsUnique = true)]
     public class Employee {
