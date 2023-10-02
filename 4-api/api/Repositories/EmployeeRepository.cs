@@ -40,25 +40,6 @@ namespace api.Repositories
 
         public int Insert(RegisterVM employee) // jika return 0 error, jika >=1 berhasil
         {
-            // generate NIK baru DDMMYY000
-            string date = DateTime.Now.ToString("ddMMyy");
-            string newNIK = "";
-
-            // cek data terakhir di database
-            var lastData = context.Employees.OrderBy(data => data.NIK).LastOrDefault();
-            if(lastData == null) {
-                // kalau ternyata gak ada data di database, otomatis urutan 001
-                newNIK = date + "001";
-            } else {
-                // ada data terakhir, ambil 3 karakter string dari NIK (nomor urut)
-                var nikLastData = lastData.NIK;
-                string lastThree = nikLastData.Substring(nikLastData.Length-3);
-                
-                // convert jadi int terus tambah satu
-                int nextSequence = int.Parse(lastThree) + 1;
-                newNIK = date + nextSequence.ToString("000"); // convert jadi string
-            }
-
             // sebelum yang menggunakan ViewModel
             // employee.NIK = newNIK;
             // context.Employees.Add(employee); // menambahkan data dari argumen method
@@ -66,6 +47,7 @@ namespace api.Repositories
             // return save;
 
             // menggunakan ViewModel
+            string newNIK = GenerateNIK();
             // Employee
             Employee employeeData = new Employee {
                 NIK = newNIK,
@@ -98,7 +80,6 @@ namespace api.Repositories
             var saveEducation = context.SaveChanges();
 
             // Profiling
-            // var lastEducationId = context.Educations.Last().Id;
             Profiling profilingData = new Profiling {
                 NIK = newNIK,
                 Education_id = educationData.Id
@@ -111,6 +92,28 @@ namespace api.Repositories
             } else {
                 return 0;
             }
+        }
+
+        public string GenerateNIK() {
+            // generate NIK baru DDMMYY000
+            string date = DateTime.Now.ToString("ddMMyy");
+            string newNIK = "";
+
+            // cek data terakhir di database
+            var lastData = context.Employees.OrderBy(data => data.NIK).LastOrDefault();
+            if(lastData == null) {
+                // kalau ternyata gak ada data di database, otomatis urutan 001
+                newNIK = date + "001";
+            } else {
+                // ada data terakhir, ambil 3 karakter string dari NIK (nomor urut)
+                var nikLastData = lastData.NIK;
+                string lastThree = nikLastData.Substring(nikLastData.Length-3);
+                
+                // convert jadi int terus tambah satu
+                int nextSequence = int.Parse(lastThree) + 1;
+                newNIK = date + nextSequence.ToString("000"); // convert jadi string
+            }
+            return newNIK;
         }
 
         public int Update(Employee employee)
@@ -140,6 +143,14 @@ namespace api.Repositories
         public bool CheckNIKExist(string NIK) {
             var data = context.Employees.AsNoTracking().FirstOrDefault(employee => employee.NIK == NIK);
             if(data == null){
+                return false;
+            }
+            return true;
+        }
+
+        public bool CheckUniversityExist(int id) {
+            var data = context.Universities.Find(id);
+            if(data == null) {
                 return false;
             }
             return true;

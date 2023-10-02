@@ -42,6 +42,8 @@ namespace api.Controllers
                 return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Email tidak boleh duplikat." });
             } else if(repository.CheckPhoneUnique(employee.Phone)==true) {
                 return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Phone tidak boleh duplikat." });
+            } else if((employee.University_Id==0) || (repository.CheckUniversityExist(employee.University_Id)==false)) {
+                return BadRequest(new { status = HttpStatusCode.BadRequest, message = "University tidak tersedia." });
             }
             
             repository.Insert(employee);
