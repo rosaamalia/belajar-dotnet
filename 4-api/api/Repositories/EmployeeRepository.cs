@@ -2,6 +2,7 @@ using api.Context;
 using api.Interfaces;
 using api.Models;
 using api.ViewModel;
+using api.Utilities;
 using Microsoft.EntityFrameworkCore;
 
 // file repositori digunakan untuk menyimpan logic kepada database
@@ -26,15 +27,79 @@ namespace api.Repositories
 
         }
 
-        public IEnumerable<Employee> Get()
+        public IEnumerable<GetEmployeeVM> Get()
         {
+            var data = context.Employees
+                .Join(context.Accounts,
+                        e => e.NIK,
+                        a => a.NIK,
+                        (employees, accounts) => new {employees, accounts}
+                )
+                .Join(context.Profilings,
+                        e => e.accounts.NIK,
+                        p => p.NIK,
+                        (combined, profilings) => new {combined, profilings}
+                )
+                .Join(context.Educations,
+                        c => c.profilings.Education_id,
+                        e => e.Id,
+                        (combined, educations) => new {combined, educations}
+                )
+                .Join(context.Universities,
+                        c => c.educations.University_Id,
+                        u => u.Id,
+                        (combined, university) => new GetEmployeeVM {
+                            FullName = combined.combined.combined.employees.FirstName + " " + combined.combined.combined.employees.LastName,
+                            Phone = combined.combined.combined.employees.Phone,
+                            BirthDate = combined.combined.combined.employees.BirthDate,
+                            Salary = combined.combined.combined.employees.Salary,
+                            Email = combined.combined.combined.employees.Email,
+                            Gender = combined.combined.combined.employees.Gender,
+                            GPA = combined.educations.GPA,
+                            University_Name = university.Name
+
+                        }
+                ).ToList();
+                
+            return (IEnumerable<GetEmployeeVM>)data;
             // context dari schema database context, employees dari dbset
-            return context.Employees.ToList();
+            // return context.Employees.ToList();
         }
 
-        public Employee Get(string NIK)
+        public GetEmployeeVM Get(string NIK)
         {
-            var data = context.Employees.Find(NIK);
+            var data = context.Employees.Where(e => e.NIK == NIK)
+                .Join(context.Accounts,
+                        e => e.NIK,
+                        a => a.NIK,
+                        (employees, accounts) => new {employees, accounts}
+                )
+                .Join(context.Profilings,
+                        e => e.accounts.NIK,
+                        p => p.NIK,
+                        (combined, profilings) => new {combined, profilings}
+                )
+                .Join(context.Educations,
+                        c => c.profilings.Education_id,
+                        e => e.Id,
+                        (combined, educations) => new {combined, educations}
+                )
+                .Join(context.Universities,
+                        c => c.educations.University_Id,
+                        u => u.Id,
+                        (combined, university) => new GetEmployeeVM {
+                            FullName = combined.combined.combined.employees.FirstName + " " + combined.combined.combined.employees.LastName,
+                            Phone = combined.combined.combined.employees.Phone,
+                            BirthDate = combined.combined.combined.employees.BirthDate,
+                            Salary = combined.combined.combined.employees.Salary,
+                            Email = combined.combined.combined.employees.Email,
+                            Gender = combined.combined.combined.employees.Gender,
+                            GPA = combined.educations.GPA,
+                            University_Name = university.Name
+
+                        }
+                ).FirstOrDefault();
+
             return data;
         }
 
@@ -65,7 +130,8 @@ namespace api.Repositories
             // Account
             Account accountData = new Account {
                 NIK = newNIK,
-                Password = employee.Password
+                Password = BCrypt.Net.BCrypt.EnhancedHashPassword(employee.Password, 13)
+                // Password = PasswordHashing(employee.Password);
             };
             context.Accounts.Add(accountData);
             var saveAccount = context.SaveChanges();
@@ -120,10 +186,10 @@ namespace api.Repositories
         {
             context.Entry(employee).State = EntityState.Modified;
             var result = context.SaveChanges();
-            Console.WriteLine(result);
             return result;
         }
 
+        // utility
         public bool CheckEmailUnique(string email) {
             var data = context.Employees.AsNoTracking().FirstOrDefault(employee => employee.Email == email);
             if(data == null){

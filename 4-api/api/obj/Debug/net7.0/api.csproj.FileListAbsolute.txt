@@ -74,3 +74,4 @@ D:\Belajar\belajar-dotnet\4-api\api\obj\Debug\net7.0\refint\api.dll
 D:\Belajar\belajar-dotnet\4-api\api\obj\Debug\net7.0\api.pdb
 D:\Belajar\belajar-dotnet\4-api\api\obj\Debug\net7.0\api.genruntimeconfig.cache
 D:\Belajar\belajar-dotnet\4-api\api\obj\Debug\net7.0\ref\api.dll
+D:\Belajar\belajar-dotnet\4-api\api\bin\Debug\net7.0\BCrypt.Net-Next.dll
