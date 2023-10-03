@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj": {}
+    "d:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj": {}
   },
   "projects": {
-    "D:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj": {
+    "d:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj",
+        "projectUniqueName": "d:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj",
         "projectName": "api",
-        "projectPath": "D:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj",
+        "projectPath": "d:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj",
         "packagesPath": "C:\\Users\\rosa.amalia\\.nuget\\packages\\",
-        "outputPath": "D:\\Belajar\\belajar-dotnet\\4-api\\api\\obj\\",
+        "outputPath": "d:\\Belajar\\belajar-dotnet\\4-api\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\rosa.amalia\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -59,6 +59,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.11, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             },
             "NETCore.MailKit": {
               "target": "Package",

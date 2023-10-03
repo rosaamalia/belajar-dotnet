@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lWx7qkolh8yE5+n7OJErjVoavCDg5EiJ7Ydcfv29GeE3t3Ex8/RT0L/XMKpnJE5JqFoKN+XW0X7eyuopJilBfw==",
+  "dgSpecHash": "XVvwiBHsnkSFYbYXs9OKsVVhxIYDNKUxKcjS28Nx6jIisOWeuEIVDRMvKkbvXg9jEgIdUlFVXQ1mffMVXtgLbw==",
   "success": true,
-  "projectFilePath": "D:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj",
+  "projectFilePath": "d:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rosa.amalia\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\rosa.amalia\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
@@ -24,6 +24,7 @@
     "C:\\Users\\rosa.amalia\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\rosa.amalia\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\rosa.amalia\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
+    "C:\\Users\\rosa.amalia\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
     "C:\\Users\\rosa.amalia\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\rosa.amalia\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
     "C:\\Users\\rosa.amalia\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",

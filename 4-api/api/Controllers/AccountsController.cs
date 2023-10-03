@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Net;
 using api.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using api.ViewModel;
 
 namespace api.Controllers
 {
@@ -43,6 +44,27 @@ namespace api.Controllers
             }
 
             return BadRequest(new {status = HttpStatusCode.BadRequest, message = "Email belum terdaftar."});
+        }
+
+        [HttpPost("change-password")]
+        public ActionResult ChangePassword(ChangePasswordVM ChangePassword) {
+            // Cek email di database
+            var emailExist = repository.GetEmployeeByEmail(ChangePassword.Email);
+            if(emailExist == null) {
+                return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Email belum terdaftar."});
+            }
+
+            // Cek password sudah sesuai dengan konfirmasi password atau belum
+            if(ChangePassword.Password != ChangePassword.CheckPassword) {
+                return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Konfirmasi password yang dimasukkan salah."});
+            }
+
+            // Cek OTP
+            var result = repository.ChangePassword(ChangePassword);
+            if(result==false) {
+                return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Kode OTP yang dimasukkan salah."});
+            }
+            return Ok(new { status = HttpStatusCode.OK, message = "Password berhasil diubah."});
         }
     }
 }

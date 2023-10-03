@@ -1,11 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Net;
 using api.Context;
+using api.Models;
 using api.ViewModel;
 using MailKit.Net.Smtp;
-using MailKit;
+using Microsoft.EntityFrameworkCore;
 using MimeKit;
 
 namespace api.Repositories
@@ -28,8 +26,8 @@ namespace api.Repositories
 
         public bool ForgetPassword(string email) {
             // Cek email ada di database
-            var data = context.Employees.FirstOrDefault(employee => employee.Email == email);
-            if(data == null) {
+            var data = GetEmployeeByEmail(email);
+            if(data==null) {
                 return false;
             }
 
@@ -47,6 +45,22 @@ namespace api.Repositories
             return true;
         }
 
+        public bool ChangePassword(ChangePasswordVM ChangePassword) {
+            // Cek OTP sesuai dengan email
+            var data = context.Employees.First(employee => employee.Email == ChangePassword.Email); // cari NIK untuk email yg dimasukkan
+            var account = context.Accounts.Find(data.NIK); // cari data account sesuai dengan NIK
+
+            if(account.OTP != ChangePassword.OTP) {
+                return false;
+            }
+
+            // Menyimpan password baru
+            account.Password = BCrypt.Net.BCrypt.EnhancedHashPassword(ChangePassword.Password, 13);
+            context.SaveChanges();
+
+            return true;
+        }
+
         public void SendEmail(string Email, string OTP)
         {
             var email = new MimeMessage();
@@ -61,7 +75,6 @@ namespace api.Repositories
             };
             using (var smtp = new SmtpClient())
             {
-                //smtp.CheckCertificateRevocation = false;
                 smtp.Connect("smtp.gmail.com", 465 , true);
 
                 // Note: only needed if the SMTP server requires authentication
@@ -70,6 +83,11 @@ namespace api.Repositories
                 smtp.Send(email);
                 smtp.Disconnect(true);
             }
+        }
+
+        public Employee GetEmployeeByEmail(string email) {
+            var data = context.Employees.AsNoTracking().FirstOrDefault(employee => employee.Email == email);
+            return data;
         }
     }
 }
