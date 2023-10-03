@@ -19,7 +19,7 @@ namespace api.Controllers
             this.repository = repository;
         }
 
-        [HttpGet("login")]
+        [HttpPost("login")]
         public ActionResult Login(string email, string password) {
             if(email==null || password==null) {
                 return BadRequest(new {status = HttpStatusCode.BadRequest, message = "Email atau password tidak boleh kosong."});
@@ -32,6 +32,17 @@ namespace api.Controllers
             }
 
             return Ok(new {status = HttpStatusCode.OK, message = "Login berhasil."});
+        }
+
+        [HttpPost("forget-password")]
+        public ActionResult ForgetPassword(string email)
+        {
+            var result = repository.ForgetPassword(email);
+            if(result) {
+                return Ok(new {status = HttpStatusCode.OK, message = "Kode OTP berhasil dikirim."});
+            }
+
+            return BadRequest(new {status = HttpStatusCode.BadRequest, message = "Email belum terdaftar."});
         }
     }
 }

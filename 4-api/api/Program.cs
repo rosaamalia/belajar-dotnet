@@ -1,5 +1,6 @@
 using api.Context;
 using api.Repositories;
+using api.ViewModel;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

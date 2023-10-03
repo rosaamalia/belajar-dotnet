@@ -7,7 +7,9 @@ D:\Belajar\belajar-dotnet\4-api\api\bin\Debug\net7.0\api.dll
 D:\Belajar\belajar-dotnet\4-api\api\bin\Debug\net7.0\api.pdb
 D:\Belajar\belajar-dotnet\4-api\api\bin\Debug\net7.0\Azure.Core.dll
 D:\Belajar\belajar-dotnet\4-api\api\bin\Debug\net7.0\Azure.Identity.dll
+D:\Belajar\belajar-dotnet\4-api\api\bin\Debug\net7.0\BCrypt.Net-Next.dll
 D:\Belajar\belajar-dotnet\4-api\api\bin\Debug\net7.0\Humanizer.dll
+D:\Belajar\belajar-dotnet\4-api\api\bin\Debug\net7.0\MailKit.dll
 D:\Belajar\belajar-dotnet\4-api\api\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
 D:\Belajar\belajar-dotnet\4-api\api\bin\Debug\net7.0\Microsoft.Bcl.AsyncInterfaces.dll
 D:\Belajar\belajar-dotnet\4-api\api\bin\Debug\net7.0\Microsoft.Data.SqlClient.dll
@@ -28,7 +30,10 @@ D:\Belajar\belajar-dotnet\4-api\api\bin\Debug\net7.0\Microsoft.IdentityModel.Tok
 D:\Belajar\belajar-dotnet\4-api\api\bin\Debug\net7.0\Microsoft.OpenApi.dll
 D:\Belajar\belajar-dotnet\4-api\api\bin\Debug\net7.0\Microsoft.SqlServer.Server.dll
 D:\Belajar\belajar-dotnet\4-api\api\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
+D:\Belajar\belajar-dotnet\4-api\api\bin\Debug\net7.0\MimeKit.dll
 D:\Belajar\belajar-dotnet\4-api\api\bin\Debug\net7.0\Mono.TextTemplating.dll
+D:\Belajar\belajar-dotnet\4-api\api\bin\Debug\net7.0\NETCore.MailKit.dll
+D:\Belajar\belajar-dotnet\4-api\api\bin\Debug\net7.0\BouncyCastle.Crypto.dll
 D:\Belajar\belajar-dotnet\4-api\api\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\Belajar\belajar-dotnet\4-api\api\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\Belajar\belajar-dotnet\4-api\api\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -74,4 +79,3 @@ D:\Belajar\belajar-dotnet\4-api\api\obj\Debug\net7.0\refint\api.dll
 D:\Belajar\belajar-dotnet\4-api\api\obj\Debug\net7.0\api.pdb
 D:\Belajar\belajar-dotnet\4-api\api\obj\Debug\net7.0\api.genruntimeconfig.cache
 D:\Belajar\belajar-dotnet\4-api\api\obj\Debug\net7.0\ref\api.dll
-D:\Belajar\belajar-dotnet\4-api\api\bin\Debug\net7.0\BCrypt.Net-Next.dll

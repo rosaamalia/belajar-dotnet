@@ -8,5 +8,7 @@ namespace api.Repositories.Interfaces
     public interface IAccountRepository
     {
         bool Login(string email, string password);
+        // void SendEmail(string email);
+        bool ForgetPassword(string email);
     }
 }
