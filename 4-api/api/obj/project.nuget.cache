@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XVvwiBHsnkSFYbYXs9OKsVVhxIYDNKUxKcjS28Nx6jIisOWeuEIVDRMvKkbvXg9jEgIdUlFVXQ1mffMVXtgLbw==",
+  "dgSpecHash": "gM1yBlbHXX4Okl7R8RCCP97HSbfA2LsV9V39VzeMyaHsLUY5iSJZOM2nFcWiz3EaW3zTkaFtLI2MJ4BNGcaApQ==",
   "success": true,
-  "projectFilePath": "d:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj",
+  "projectFilePath": "D:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rosa.amalia\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\rosa.amalia\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

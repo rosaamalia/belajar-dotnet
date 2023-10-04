@@ -22,10 +22,12 @@ namespace api.Controllers
 
         [HttpPost("login")]
         public ActionResult Login(string email, string password) {
-            if(email==null || password==null) {
-                return BadRequest(new {status = HttpStatusCode.BadRequest, message = "Email atau password tidak boleh kosong."});
+            // Cek email di database
+            var emailExist = repository.GetEmployeeByEmail(email);
+            if(emailExist == null) {
+                return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Email belum terdaftar."});
             }
-
+            
             var result = repository.Login(email, password);
 
             if(result==false){
@@ -57,6 +59,17 @@ namespace api.Controllers
             // Cek password sudah sesuai dengan konfirmasi password atau belum
             if(ChangePassword.Password != ChangePassword.CheckPassword) {
                 return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Konfirmasi password yang dimasukkan salah."});
+            }
+
+            // Cek OTP sudah digunakan atau belum
+            if(repository.IsUsed(ChangePassword.Email)) {
+                return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Kode OTP sudah digunakan."});
+            }
+
+            // Cek OTP sudah expired atau belum
+            if(repository.Expired(ChangePassword.Email)) {
+                return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Kode OTP sudah kedaluwarsa."});
+            
             }
 
             // Cek OTP

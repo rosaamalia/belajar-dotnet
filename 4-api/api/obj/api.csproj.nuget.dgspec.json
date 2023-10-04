@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj": {}
+    "D:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj": {}
   },
   "projects": {
-    "d:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj": {
+    "D:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj",
+        "projectUniqueName": "D:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj",
         "projectName": "api",
-        "projectPath": "d:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj",
+        "projectPath": "D:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj",
         "packagesPath": "C:\\Users\\rosa.amalia\\.nuget\\packages\\",
-        "outputPath": "d:\\Belajar\\belajar-dotnet\\4-api\\api\\obj\\",
+        "outputPath": "D:\\Belajar\\belajar-dotnet\\4-api\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\rosa.amalia\\AppData\\Roaming\\NuGet\\NuGet.Config"

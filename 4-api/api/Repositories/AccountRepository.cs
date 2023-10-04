@@ -38,6 +38,9 @@ namespace api.Repositories
             
             var account = context.Accounts.Find(data.NIK);
             account.OTP = OTP;
+            DateTime currentTime = DateTime.Now;
+            account.Expired = currentTime.AddMinutes(2);
+            account.IsUsed = false;
             context.SaveChanges();
 
             // Kirim email
@@ -56,6 +59,7 @@ namespace api.Repositories
 
             // Menyimpan password baru
             account.Password = BCrypt.Net.BCrypt.EnhancedHashPassword(ChangePassword.Password, 13);
+            account.IsUsed = true;
             context.SaveChanges();
 
             return true;
@@ -88,6 +92,22 @@ namespace api.Repositories
         public Employee GetEmployeeByEmail(string email) {
             var data = context.Employees.AsNoTracking().FirstOrDefault(employee => employee.Email == email);
             return data;
+        }
+
+        public bool IsUsed(string email) {
+            var employee = GetEmployeeByEmail(email);
+            return (bool)context.Accounts.SingleOrDefault(account => account.NIK == employee.NIK).IsUsed;
+        }
+
+        public bool Expired(string email) {
+            var employee = GetEmployeeByEmail(email);
+            var expired = context.Accounts.SingleOrDefault(account => account.NIK == employee.NIK).Expired;
+        
+            if(DateTime.Now > expired) {
+                return true;
+            }
+
+            return false;
         }
     }
 }

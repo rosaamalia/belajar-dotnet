@@ -3659,11 +3659,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj",
+      "projectUniqueName": "d:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj",
       "projectName": "api",
-      "projectPath": "D:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj",
+      "projectPath": "d:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj",
       "packagesPath": "C:\\Users\\rosa.amalia\\.nuget\\packages\\",
-      "outputPath": "D:\\Belajar\\belajar-dotnet\\4-api\\api\\obj\\",
+      "outputPath": "d:\\Belajar\\belajar-dotnet\\4-api\\api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\rosa.amalia\\AppData\\Roaming\\NuGet\\NuGet.Config"

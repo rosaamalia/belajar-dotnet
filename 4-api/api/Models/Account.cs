@@ -13,6 +13,8 @@ namespace api.Models
         public string NIK { get; set; } // foreign key dari model Employee, didefiniiskan di dalam Context
         public string Password { get; set; }
         public string? OTP { get; set; }
+        public bool? IsUsed { get; set; }
+        public DateTime? Expired { get; set; }
         public Employee Employee { get; set; }
         public Profiling Profiling { get; set; }
     }
