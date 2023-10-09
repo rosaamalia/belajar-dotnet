@@ -19,7 +19,7 @@ namespace api.Controllers
         [HttpGet]
         public ActionResult Get() {
             var data = repository.Get(); // mengambil fungsi dari repositori
-            if(data != null) {
+            if(data.Count() != 0) {
                 return Ok(new { status = HttpStatusCode.OK, message = "Data berhasil ditemukan.", data = data });
             } else {
                 return NotFound(new { status = HttpStatusCode.NotFound, message = "Data tidak ditemukan."});
@@ -73,5 +73,11 @@ namespace api.Controllers
             repository.Update(employee);
             return Ok(new { status = HttpStatusCode.OK, message = "Data berhasil diubah." });
         }
+
+        [HttpGet("cors")]
+
+        public ActionResult TestCORS() {
+            return Ok("Test Cors berhasil 😊");
+        }        
     }
 }

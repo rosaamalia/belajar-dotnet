@@ -1,0 +1,20 @@
+@page
+@model client.Views.TestCors.Index
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+<script>
+    $.ajax({
+        url: "http://localhost:5251/api/Employees/cors",
+        success: function(result) {
+            console.log(result);
+        }
+    })
+</script>

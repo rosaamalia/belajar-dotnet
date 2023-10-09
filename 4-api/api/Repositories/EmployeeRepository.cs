@@ -109,6 +109,7 @@ namespace api.Repositories
             // context.Employees.Add(employee); // menambahkan data dari argumen method
             // var save = context.SaveChanges(); // menyimpan hasil data yang disimpan
             // return save;
+            
 
             // menggunakan ViewModel
             string newNIK = GenerateNIK();

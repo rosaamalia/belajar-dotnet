@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@* <div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div> *@
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Default Card Example</h3>
+    <div class="card-tools">
+      <!-- Buttons, labels, and many other things can be placed here! -->
+      <!-- Here is a label for example -->
+      <span class="badge badge-primary">Label</span>
+    </div>
+    <!-- /.card-tools -->
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    The body of the card
+  </div>
+  <!-- /.card-body -->
+  <div class="card-footer">
+    The footer of the card
+  </div>
+  <!-- /.card-footer -->
+</div>
+<!-- /.card -->
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+    console.log("Halo");
+    $.ajax({
+        url: "http://localhost:5058/api/Employees/",
+        success: function(result) {
+            console.log(result.data);
+        }
+    })
+</script>

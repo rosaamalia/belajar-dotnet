@@ -50,6 +50,9 @@ namespace api.Controllers
 
         [HttpPost("change-password")]
         public ActionResult ChangePassword(ChangePasswordVM ChangePassword) {
+            if(ChangePassword.OTP == "") {
+                return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Kode OTP belum terisi."});
+            }
             // Cek email di database
             var emailExist = repository.GetEmployeeByEmail(ChangePassword.Email);
             if(emailExist == null) {

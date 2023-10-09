@@ -4,6 +4,7 @@ using api.Models;
 using api.ViewModel;
 using MailKit.Net.Smtp;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using MimeKit;
 
 namespace api.Repositories
@@ -11,9 +12,11 @@ namespace api.Repositories
     public class AccountRepository
     {
         private readonly MyContext context;
+        private readonly EmailConfig _config;
 
-        public AccountRepository(MyContext context) {
+        public AccountRepository(MyContext context, IOptions<EmailConfig> config) {
             this.context = context;
+            _config = config.Value;
         }
 
         public bool Login(string email, string password) {
@@ -68,8 +71,9 @@ namespace api.Repositories
         public void SendEmail(string Email, string OTP)
         {
             var email = new MimeMessage();
+            // Console.WriteLine(_config.ToString()) ;
 
-            email.From.Add(new MailboxAddress("Rosa Amalia", "amaliarosaaa15@gmail.com"));
+            email.From.Add(new MailboxAddress(_config.Nama, _config.Email));
             email.To.Add(new MailboxAddress("Penerima", Email));
 
             email.Subject = "Kode OTP Lupa Password";
@@ -79,11 +83,11 @@ namespace api.Repositories
             };
             using (var smtp = new SmtpClient())
             {
-                smtp.Connect("smtp.gmail.com", 465 , true);
+                smtp.Connect(_config.Host, _config.Port , true);
 
                 // Note: only needed if the SMTP server requires authentication
                 //smtp.Authenticate("a14201852661a9", "ecc3f7e0ba79fe");
-                smtp.Authenticate("amaliarosaaa15@gmail.com", "modp gvir sugh ajes");
+                smtp.Authenticate(_config.Email, _config.AppPassword);
                 smtp.Send(email);
                 smtp.Disconnect(true);
             }
