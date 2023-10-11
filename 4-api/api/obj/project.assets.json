@@ -3659,19 +3659,21 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj",
+      "projectUniqueName": "D:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj",
       "projectName": "api",
-      "projectPath": "d:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj",
+      "projectPath": "D:\\Belajar\\belajar-dotnet\\4-api\\api\\api.csproj",
       "packagesPath": "C:\\Users\\rosa.amalia\\.nuget\\packages\\",
-      "outputPath": "d:\\Belajar\\belajar-dotnet\\4-api\\api\\obj\\",
+      "outputPath": "D:\\Belajar\\belajar-dotnet\\4-api\\api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\rosa.amalia\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\rosa.amalia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

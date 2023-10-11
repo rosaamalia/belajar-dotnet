@@ -9,7 +9,7 @@ namespace tugas_api.Repositories.Interfaces
 {
     public interface IEmployeeRepository
     {
-        IEnumerable<Employee> Get();
+        IEnumerable<GetEmployeeAndDepartmentVM> Get();
         Employee Get(string NIK);
         int Insert(EmployeeVM employee);
         int Update(string NIK, EmployeeVM employee);

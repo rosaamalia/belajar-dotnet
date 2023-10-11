@@ -42,11 +42,9 @@ namespace tugas_api.Controllers
 
         [HttpPost]
         public virtual ActionResult Insert(DepartmentVM department) {
-            // if(repository.CheckPhoneUnique(employee.PhoneNumber)==true) {
-            //     return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Nomor ponsel sudah terdaftar." });
-            // } else if(repository.CheckDepartmentExist(employee.Department_id)==false) {
-            //     return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Departemen tidak tersedia." });
-            // }
+            if(repository.CheckNameUnique(department.Name)==true) {
+                return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Nama departemen sudah ada." });
+            }
             
             repository.Insert(department);
             return Ok(new { status = HttpStatusCode.OK, message = "Data berhasil ditambahkan." });
@@ -64,11 +62,9 @@ namespace tugas_api.Controllers
 
         [HttpPut("{id}")]
         public virtual ActionResult Update(string id, DepartmentVM department) {
-            // if(repository.CheckNIKExist(employee.NIK)==false) {
-            //     return NotFound(new { status = HttpStatusCode.NotFound, message = "NIK tidak ditemukan." });
-            // } else if(repository.CheckPhoneUnique(employee.PhoneNumber)==true) {
-            //     return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Nomor ponsel sudah terdaftar."});
-            // }
+            if(repository.CheckNameUnique(department.Name)==true) {
+                return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Nama departemen sudah ada." });
+            }
 
             repository.Update(id, department);
             return Ok(new { status = HttpStatusCode.OK, message = "Data berhasil diubah." });

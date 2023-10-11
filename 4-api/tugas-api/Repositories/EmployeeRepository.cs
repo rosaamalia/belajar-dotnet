@@ -18,9 +18,9 @@ namespace tugas_api.Repositories
         /*
          * Get semua data Employee
          */
-        public IEnumerable<Employee> Get() {
+        public IEnumerable<GetEmployeeAndDepartmentVM> Get() {
             // var data = getEmployee();
-            return context.Employees.ToList();
+            return getEmployee().ToList();
         }
 
         /*

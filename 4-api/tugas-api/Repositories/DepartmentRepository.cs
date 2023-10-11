@@ -62,5 +62,13 @@ namespace tugas_api.Repositories
             var result = context.SaveChanges();
             return result;
         }
+
+        public bool CheckNameUnique(string name) {
+            var data = context.Departments.AsNoTracking().FirstOrDefault(department => department.Name == name);
+            if(data == null){
+                return false;
+            }
+            return true;
+        }
     }
 }
