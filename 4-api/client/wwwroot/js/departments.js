@@ -1,19 +1,8 @@
-const getDepartments = () => {
-    $.ajax({
-        type: "GET",
-        url: "http://localhost:5058/api/Departments",
-        contentType: "application/json",
-        dataType: "json",
-        success:  function(result) {
-            return result.data;
-        },
-    })
-}
-
 const setAddDepartmentModal = () => {
     $('#modalLabel').text("Add new department") // ganti modal title
     $('#addDepartment').addClass("d-block") // menampilkan form untuk menambahkan data
     $('#editDepartment').removeClass("d-block") // menyembunyikan form edit
+    $('#addDepartmentName').val('')
     return false;
 }
 
@@ -68,11 +57,11 @@ const addDepartment = (e) => {
           });
     }
 
-};
+};$('#editDepartment').addClass("d-block")
 
 const setEditDepartmentModal = (id, name) => {
     $('#modalLabel').text("Edit department") // ganti modal title
-    $('#editDepartment').addClass("d-block") // menampilkan form untuk mengedit data
+     // menampilkan form untuk mengedit data
     $('#addDepartment').removeClass("d-block") // menyembunyikan form tambah
     
     $('#editDepartmentId').val(id)
@@ -207,7 +196,7 @@ $(document).ready(function () {
                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#departmentModal" data-tooltip="tooltip" data-placement="left" title="Edit department" onclick="setEditDepartmentModal('${data.dept_ID}', '${data.name}')">
                         <i class="fas fa-edit"></i>
                     </button>
-                    <button type="button" class="btn btn-danger" data-tooltip="tooltip" data-placement="right" title="Edit department" onclick="deleteDepartment('${data.dept_ID}')">
+                    <button type="button" class="btn btn-danger" data-tooltip="tooltip" data-placement="right" title="Delete department" onclick="deleteDepartment('${data.dept_ID}')">
                         <i class="fas fa-trash"></i>
                     </button>
                 </div>`;

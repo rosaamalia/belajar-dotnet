@@ -1,0 +1,205 @@
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/DataTablesLayout.cshtml";
+}
+
+<div>
+    <!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+    <div class="row mb-2">
+        <div class="col-sm-6">
+        <h1>Employees</h1>
+        </div>
+        <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Employees</li>
+        </ol>
+        </div>
+    </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex justify-content-between">
+                    <span data-toggle="modal" data-target="#employeeModal">
+                        <button type="button" class="btn btn-success" data-tooltip="tooltip" data-placement="right" title="New employee" onclick="setAddEmployeeModal(event)">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </span>
+
+                    <div class="col-3">
+                        <select class="custom-select" id="employeeData">
+                            <option value="" selected>Choose data...</option>
+                            <option value="master">DATA MASTER</option>
+                            <option value="active">ACTIVE EMPLOYEES</option>
+                            <option value="resign">RESIGNED EMPLOYEES</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="employeeModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel">Label</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <form>
+                            <div class="modal-body">
+                                    <input type="text" id="NIK" hidden>
+                                    <div class="col mb-2">
+                                        <label for="FirstName">First Name</label>
+                                        <input type="text" class="form-control" id="FirstName" required>
+                                        <div id="FirstNameFeedback" class="invalid-feedback">
+                                            Kolom First Name tidak boleh kosong.
+                                        </div>
+                                    </div>
+                                    <div class="col mb-2">
+                                        <label for="LastName">Last Name</label>
+                                        <input type="text" class="form-control" id="LastName" required>
+                                        <div id="LastNameFeedback" class="invalid-feedback">
+                                            Kolom Last Name tidak boleh kosong.
+                                        </div>
+                                    </div>
+                                    <div class="col mb-2">
+                                        <label for="PhoneNumber">Phone Number</label>
+                                        <input type="text" class="form-control" id="PhoneNumber" required>
+                                        <div id="PhoneNumberFeedback" class="invalid-feedback">
+                                            Kolom Phone Number tidak boleh kosong.
+                                        </div>
+                                    </div>
+                                    <div class="col mb-2">
+                                        <label for="Address">Address</label>
+                                        <input type="text" class="form-control" id="Address" required>
+                                        <div id="AddressFeedback" class="invalid-feedback">
+                                            Kolom Address tidak boleh kosong.
+                                        </div>
+                                    </div>
+                                    <div class="col mb-2">
+                                        <label for="IsActive">Status</label>
+                                        <select class="custom-select" id="IsActive" required>
+                                            <option value="" selected>Choose...</option>
+                                            <option value="true">ACTIVE</option>
+                                            <option value="false">RESIGN</option>
+                                        </select>
+                                        <div id="IsActiveFeedback" class="invalid-feedback">
+                                            Kolom Status harus dipilih.
+                                        </div>
+                                    </div>
+                                    <div class="col mb-2">
+                                        <label for="DepartmentId">Department</label>
+                                        <select class="custom-select" id="DepartmentId" required>
+                                            <option value="" selected>Choose...</option>
+                                        </select>
+                                        <div id="DepartmentIdFeedback" class="invalid-feedback">
+                                            Kolom Department harus dipilih.
+                                        </div>
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-success" id="addButton" onclick="addEmployee(event)">Add</button>
+                                <button type="submit" class="btn btn-warning" id="editButton" onclick="editEmployee(event)">Edit</button>
+                            </div>
+                        </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+            <table id="employeeTable" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                    <th>No.</th>
+                    <th>NIK</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Address</th>
+                    <th>Status</th>
+                    <th>Department</th>
+                    <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>No.</td>
+                    <td>NIK</td>
+                    <td>Full Name</td>
+                    <td>Email</td>
+                    <td>Phone Number</td>
+                    <td>Address</td>
+                    <td>Status</td>
+                    <td>Department</td>
+                    <td>Action</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                    <th>No.</th>
+                    <th>NIK</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Address</th>
+                    <th>Status</th>
+                    <th>Department</th>
+                    <th>Action</th>
+                    </tr>
+                </tfoot>
+            </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+
+        <!-- /.card -->
+
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+</div>
+
+@section Scripts{
+<!-- jQuery -->
+<script src="~/adminlte-3.2.0/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="~/adminlte-3.2.0/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="~/adminlte-3.2.0/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="~/adminlte-3.2.0/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="~/adminlte-3.2.0/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="~/adminlte-3.2.0/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="~/adminlte-3.2.0/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="~/adminlte-3.2.0/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="~/adminlte-3.2.0/plugins/jszip/jszip.min.js"></script>
+<script src="~/adminlte-3.2.0/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="~/adminlte-3.2.0/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="~/adminlte-3.2.0/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="~/adminlte-3.2.0/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="~/adminlte-3.2.0/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- AdminLTE App -->
+<script src="~/adminlte-3.2.0/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+@* <script src="~/adminlte-3.2.0/dist/js/demo.js"></script> *@
+<!-- Page specific script -->
+<script src="~/js/employees.js"></script>
+}

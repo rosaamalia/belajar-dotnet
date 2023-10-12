@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Cq0rlf9un6dTHP8UjcSWMkgsvRm5JjNABio0R6xLuk4=",
+  "Hash": "zY+GLWPddIw7ZD07TgRrQh3c8Wn9iTVm7iauAdcWPSA=",
   "Source": "client",
   "BasePath": "_content/client",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Belajar\\belajar-dotnet\\4-api\\client\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\client.bundle.scp.css"
+    },
+    {
+      "Identity": "D:\\Belajar\\belajar-dotnet\\4-api\\client\\wwwroot\\.gitignore",
+      "SourceId": "client",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Belajar\\belajar-dotnet\\4-api\\client\\wwwroot\\",
+      "BasePath": "_content/client",
+      "RelativePath": ".gitignore",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\.gitignore"
     },
     {
       "Identity": "D:\\Belajar\\belajar-dotnet\\4-api\\client\\wwwroot\\AdminLTE-3.2.0\\.babelrc.js",
@@ -41359,6 +41376,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\departments.js"
+    },
+    {
+      "Identity": "D:\\Belajar\\belajar-dotnet\\4-api\\client\\wwwroot\\js\\employees.js",
+      "SourceId": "client",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Belajar\\belajar-dotnet\\4-api\\client\\wwwroot\\",
+      "BasePath": "_content/client",
+      "RelativePath": "js/employees.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\employees.js"
     },
     {
       "Identity": "D:\\Belajar\\belajar-dotnet\\4-api\\client\\wwwroot\\js\\site.js",

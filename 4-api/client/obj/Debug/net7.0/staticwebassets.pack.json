@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\client.bundle.scp.css"
     },
     {
+      "Id": "D:\\Belajar\\belajar-dotnet\\4-api\\client\\wwwroot\\.gitignore",
+      "PackagePath": "staticwebassets\\.gitignore"
+    },
+    {
       "Id": "D:\\Belajar\\belajar-dotnet\\4-api\\client\\wwwroot\\AdminLTE-3.2.0\\.babelrc.js",
       "PackagePath": "staticwebassets\\AdminLTE-3.2.0\\.babelrc.js"
     },
@@ -9723,6 +9727,10 @@
     {
       "Id": "D:\\Belajar\\belajar-dotnet\\4-api\\client\\wwwroot\\js\\departments.js",
       "PackagePath": "staticwebassets\\js\\departments.js"
+    },
+    {
+      "Id": "D:\\Belajar\\belajar-dotnet\\4-api\\client\\wwwroot\\js\\employees.js",
+      "PackagePath": "staticwebassets\\js\\employees.js"
     },
     {
       "Id": "D:\\Belajar\\belajar-dotnet\\4-api\\client\\wwwroot\\js\\site.js",
