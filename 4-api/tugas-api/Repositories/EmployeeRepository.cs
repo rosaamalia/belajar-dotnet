@@ -168,9 +168,9 @@ namespace tugas_api.Repositories
         }
 
         
-        public bool CheckPhoneUnique(string phone) {
+        public bool CheckPhoneUnique(string phone, string NIK) {
             var data = context.Employees.AsNoTracking().FirstOrDefault(employee => employee.PhoneNumber == phone);
-            if(data == null){
+            if(data == null || data.NIK == NIK){
                 return false;
             }
             return true;

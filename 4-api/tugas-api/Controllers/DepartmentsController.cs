@@ -52,9 +52,9 @@ namespace tugas_api.Controllers
 
         [HttpDelete("{id}")]
         public virtual ActionResult Delete(string id) {
-            // if(repository.CheckNIKExist(NIK)==false) {
-            //     return NotFound(new { status = HttpStatusCode.NotFound, message = "NIK tidak ditemukan." });
-            // }
+            if(repository.CheckEmployeeExist(id)==true) {
+                return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Data tidak dapat dihapus, karena masih ada data employee." });
+            }
 
             repository.Delete(id);
             return Ok(new { status = HttpStatusCode.OK, message = "Data berhasil dihapus." });

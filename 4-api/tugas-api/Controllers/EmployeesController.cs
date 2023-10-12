@@ -42,7 +42,7 @@ namespace tugas_api.Controllers
 
         [HttpPost]
         public virtual ActionResult Insert(EmployeeVM employee) {
-            if(repository.CheckPhoneUnique(employee.PhoneNumber)==true) {
+            if(repository.CheckPhoneUnique(employee.PhoneNumber, null)==true) {
                 return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Nomor ponsel sudah terdaftar." });
             } else if(repository.CheckDepartmentExist(employee.Department_id)==false) {
                 return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Departemen tidak tersedia." });
@@ -66,7 +66,7 @@ namespace tugas_api.Controllers
         public virtual ActionResult Update(string NIK, EmployeeVM employee) {
             if(repository.CheckNIKExist(NIK)==false) {
                 return NotFound(new { status = HttpStatusCode.NotFound, message = "NIK tidak ditemukan." });
-            } else if(repository.CheckPhoneUnique(employee.PhoneNumber)==true) {
+            } else if(repository.CheckPhoneUnique(employee.PhoneNumber, NIK)==true) {
                 return BadRequest(new { status = HttpStatusCode.BadRequest, message = "Nomor ponsel sudah terdaftar."});
             }
 

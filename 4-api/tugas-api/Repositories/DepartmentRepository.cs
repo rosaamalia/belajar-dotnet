@@ -70,5 +70,13 @@ namespace tugas_api.Repositories
             }
             return true;
         }
+
+        public bool CheckEmployeeExist(string department_id) {
+            var data = context.Employees.AsNoTracking().FirstOrDefault(employee => employee.Department_id == department_id);
+            if(data == null){
+                return false;
+            }
+            return true;
+        }
     }
 }
