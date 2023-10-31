@@ -3,6 +3,7 @@ using tugas_api.Repositories.Interfaces;
 using tugas_api.Models;
 using tugas_api.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Dynamic.Core;
 
 namespace tugas_api.Repositories
 {
@@ -16,6 +17,36 @@ namespace tugas_api.Repositories
 
         public IEnumerable<Department> Get(){
             return context.Departments.ToList();
+        }
+
+        public Object GetPaging(DataTableParamVM inputData) {
+            var totalRecord = 0;
+            var filterRecord = 0;
+
+            var data = context.Departments.AsQueryable();
+            totalRecord = data.Count();
+
+            // search data when search value found
+            if (!string.IsNullOrEmpty(inputData.searchValue)) {
+                data = data.Where(x => x.Dept_ID.ToLower().Contains(inputData.searchValue.ToLower()) || x.Name.ToLower().Contains(inputData.searchValue.ToLower()));
+            }
+            // get total count of records after search
+            filterRecord = data.Count();
+
+            //sort data
+            if (!string.IsNullOrEmpty(inputData.sortColumn) && !string.IsNullOrEmpty(inputData.sortColumnDirection)) 
+            {
+                data = data.OrderBy(inputData.sortColumn + " " + inputData.sortColumnDirection);
+                // data = data.OrderBy((item) => item.PropertyToOrderBy);
+            }
+
+            //pagination
+            var dataList = data.Skip(inputData.skip).Take(inputData.pageSize).ToList();
+            var returnObj = new {
+                draw = inputData.draw, recordsTotal = totalRecord, recordsFiltered = filterRecord, data = dataList
+            };
+
+            return returnObj;
         }
 
         public Department Get(string id){

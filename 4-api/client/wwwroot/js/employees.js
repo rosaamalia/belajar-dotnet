@@ -11,6 +11,8 @@ $(document).ready(function () {
     "lengthChange": false,
     "autoWidth": false,
     "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
+    "processing": true,
+    "serverSide": true,
     "ajax": {
         url: masterData,
         type: "GET",
@@ -54,8 +56,8 @@ $(document).ready(function () {
             targets: [-1],
             render: function (data) {
                 let datastring = encodeURIComponent(JSON.stringify(data))
-                return `<div class="d-flex justify-content-around col">
-                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#employeeModal" data-tooltip="tooltip" data-placement="left" title="Edit employee" onclick="setEditEmployeeModal('${datastring}')">
+                return `<div class="d-flex">
+                    <button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#employeeModal" data-tooltip="tooltip" data-placement="left" title="Edit employee" onclick="setEditEmployeeModal('${datastring}')">
                         <i class="fas fa-edit"></i>
                     </button>
                     <button type="button" class="btn btn-danger" data-tooltip="tooltip" data-placement="right" title="Delete employee" onclick="deleteEmployee('${data.nik}')">

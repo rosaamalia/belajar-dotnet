@@ -14,5 +14,6 @@ namespace tugas_api.Repositories.Interfaces
         int Insert(DepartmentVM name);
         int Update(string id, DepartmentVM department);
         int Delete(string id);
+        // object GetPaging(object inputData);
     }
 }

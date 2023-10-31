@@ -30,6 +30,55 @@ namespace tugas_api.Controllers
             }
         }
 
+        [HttpGet("paging")]
+        public ActionResult GetPaging() {
+            var draw = Request.Query["draw"].FirstOrDefault();
+            var sortColumn = Request.Query["columns[" + Request.Query["order[0][column]"].FirstOrDefault() + "][name]"].FirstOrDefault();
+            var sortColumnDirection = Request.Query["order[0][dir]"].FirstOrDefault();
+            var searchValue = Request.Query["search[value]"].FirstOrDefault();
+            int pageSize = Convert.ToInt32(Request.Query["length"].FirstOrDefault() ?? "0");
+            int skip = Convert.ToInt32(Request.Query["start"].FirstOrDefault() ?? "0");
+
+            var inputData = new DataTableParamVM {
+                draw = draw,
+                sortColumn = sortColumn,
+                sortColumnDirection = sortColumnDirection,
+                searchValue = searchValue,
+                pageSize = pageSize,
+                skip = skip,
+            };
+            // inputData.
+
+            var data = repository.GetPaging(inputData);
+
+            // var data = repository.Get().AsQueryable();
+
+            // totalRecord = data.Count();
+            // // search data when search value found
+            // if (!string.IsNullOrEmpty(searchValue)) {
+            //     data = data.Where(x => x.Dept_ID.ToLower().Contains(searchValue.ToLower()) || x.Name.ToLower().Contains(searchValue.ToLower()));
+            // }
+            // // get total count of records after search
+            // filterRecord = data.Count();
+
+            // //sort data
+            // if (!string.IsNullOrEmpty(sortColumn) && !string.IsNullOrEmpty(sortColumnDirection)) 
+            // {
+            //     data = data.OrderBy(sortColumn + " " + sortColumnDirection);
+            //     // data = data.OrderBy((item) => item.PropertyToOrderBy);
+            // }
+
+
+            // //pagination
+            // var empList = data.Skip(skip).Take(pageSize).ToList();
+            // var returnObj = new {
+            //     draw = draw, recordsTotal = totalRecord, recordsFiltered = filterRecord, data = empList
+            // };
+
+            // Console.WriteLine(sortColumn);
+            return Ok(data);
+        }
+
         [HttpGet("{id}")]
         public virtual ActionResult Get(string id) {
             var data = repository.Get(id);

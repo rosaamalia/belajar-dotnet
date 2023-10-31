@@ -169,24 +169,26 @@ $(document).ready(function () {
     "lengthChange": false,
     "autoWidth": false,
     "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
+    "processing": true,
+    "serverSide": true,
     "ajax": 
     {
-        url: "http://localhost:5058/api/Departments",
+        url: "http://localhost:5058/api/Departments/paging",
         type: "GET",
         "datatype": "json",
         "dataSrc": "data"
     },
     "columns": [
         { "data": null },
-        { "data": "dept_ID" },
-        { "data": "name" },
+        { "data": "dept_ID", "name": "Dept_ID" },
+        { "data": "name", "name": "Name" },
         { "data": null }
     ],
     columnDefs: [
         {
             targets: 0,
             searchable: false,
-            orderable: false,
+            // orderable: false,
         },
         {
             orderable: false,

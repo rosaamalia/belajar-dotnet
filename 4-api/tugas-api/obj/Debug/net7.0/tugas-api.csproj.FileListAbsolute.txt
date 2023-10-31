@@ -75,3 +75,9 @@ D:\Belajar\belajar-dotnet\4-api\tugas-api\bin\Debug\net7.0\Microsoft.EntityFrame
 D:\Belajar\belajar-dotnet\4-api\tugas-api\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
 D:\Belajar\belajar-dotnet\4-api\tugas-api\bin\Debug\net7.0\Mono.TextTemplating.dll
 D:\Belajar\belajar-dotnet\4-api\tugas-api\bin\Debug\net7.0\System.CodeDom.dll
+D:\Belajar\belajar-dotnet\4-api\tugas-api\bin\Debug\net7.0\publish\web.config
+D:\Belajar\belajar-dotnet\4-api\tugas-api\bin\Debug\net7.0\publish\appsettings.Development.json
+D:\Belajar\belajar-dotnet\4-api\tugas-api\bin\Debug\net7.0\publish\appsettings.json
+D:\Belajar\belajar-dotnet\4-api\tugas-api\bin\Debug\net7.0\publish\tugas-api.deps.json
+D:\Belajar\belajar-dotnet\4-api\tugas-api\bin\Debug\net7.0\publish\tugas-api.runtimeconfig.json
+D:\Belajar\belajar-dotnet\4-api\tugas-api\bin\Debug\net7.0\System.Linq.Dynamic.Core.dll
